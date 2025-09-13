@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+// import { Listbox } from "@headlessui/react";
 
 export default function FeedbackForm() {
   const [name, setName] = useState("");
@@ -10,13 +11,15 @@ export default function FeedbackForm() {
   const [code, setCode] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setSubmitted(true);
   };
 
+  // const people = ["John", "Mary", "Alex", "Sara", "Chinchu", "Soorya"];
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-blue-50 p-4">
+    <div className="flex justify-center items-center h-auto min-w-3xl bg-blue-300 p-4">
       <Card className="w-full max-w-md shadow-xl rounded-2xl bg-white">
         <CardContent className="p-6 space-y-6">
           {!submitted ? (
@@ -26,51 +29,63 @@ export default function FeedbackForm() {
               </h2>
 
               {/* Dropdown */}
-              <select
-                className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              >
-                <option value="">Select a name</option>
-                <option value="John">John</option>
-                <option value="Mary">Mary</option>
-                <option value="Alex">Alex</option>
-                <option value="Sara">Sara</option>
-              </select>
+              <div>
+                <h2>Name to the person</h2>
+                <select
+                  className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                >
+                  <option value="">Select a name</option>
+                  <option value="John">John</option>
+                  <option value="Mary">Mary</option>
+                  <option value="Alex">Alex</option>
+                  <option value="Sara">Sara</option>
+                </select>
+              </div>
 
               {/* Title */}
-              <input
-                type="text"
-                className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+              <div>
+                <h2>TITLE</h2>
+                <input
+                  type="text"
+                  className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
 
               {/* Feedback */}
-              <textarea
-                className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none resize-none"
-                rows="3"
-                placeholder="Your feedback"
-                value={feedback}
-                onChange={(e) => setFeedback(e.target.value)}
-              />
+              <div>
+                <h2>Feedback</h2>
+                <textarea
+                  className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+                  rows={5}
+                  placeholder="Your feedback"
+                  value={feedback}
+                  onChange={(e) => setFeedback(e.target.value)}
+                />
+              </div>
 
               {/* Six Digit Code */}
-              <input
-                type="text"
-                maxLength="6"
-                className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                placeholder="Enter 6-digit code"
-                value={code}
-                onChange={(e) => setCode(e.target.value.replace(/\D/, ""))}
-              />
+              <div>
+                <h2>Enter Code</h2>
+                <input
+                  type="number"
+                  // maxLength="6"
+                  className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Enter 6-digit code"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.replace(/\D/, ""))}
+                />
+              </div>
 
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium"
-                // disabled={!name || !title || !feedback || code.length !== 6}
+                className="w-full h-14 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold"
+                disabled={!name || !title || !feedback || code.length !== 6}
               >
                 Submit
               </Button>
