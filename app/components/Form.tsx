@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 // import { Listbox } from "@headlessui/react";
+import CustomDropdown from "./dropdown";
 
 export default function FeedbackForm() {
   const [name, setName] = useState("");
@@ -16,10 +17,8 @@ export default function FeedbackForm() {
     setSubmitted(true);
   };
 
-  // const people = ["John", "Mary", "Alex", "Sara", "Chinchu", "Soorya"];
-
   return (
-    <div className="flex justify-center items-center h-auto min-w-3xl bg-blue-300 p-4">
+    <div className="flex justify-center items-center h-auto min-w-3xl bg-blue-300 p-10">
       <Card className="w-full max-w-md shadow-xl rounded-2xl bg-white">
         <CardContent className="p-6 space-y-6">
           {!submitted ? (
@@ -27,23 +26,10 @@ export default function FeedbackForm() {
               <h2 className="text-xl font-semibold text-center text-blue-700">
                 Feedback Form
               </h2>
-
               {/* Dropdown */}
               <div>
-                <h2>Name to the person</h2>
-                <select
-                  className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                >
-                  <option value="">Select a name</option>
-                  <option value="John">John</option>
-                  <option value="Mary">Mary</option>
-                  <option value="Alex">Alex</option>
-                  <option value="Sara">Sara</option>
-                </select>
+                <CustomDropdown />
               </div>
-
               {/* Title */}
               <div>
                 <h2>TITLE</h2>
@@ -55,7 +41,6 @@ export default function FeedbackForm() {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
-
               {/* Feedback */}
               <div>
                 <h2>Feedback</h2>
@@ -67,7 +52,6 @@ export default function FeedbackForm() {
                   onChange={(e) => setFeedback(e.target.value)}
                 />
               </div>
-
               {/* Six Digit Code */}
               <div>
                 <h2>Enter Code</h2>
@@ -80,7 +64,6 @@ export default function FeedbackForm() {
                   onChange={(e) => setCode(e.target.value.replace(/\D/, ""))}
                 />
               </div>
-
               {/* Submit Button */}
               <Button
                 type="submit"
