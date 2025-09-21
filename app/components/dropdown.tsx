@@ -9,7 +9,7 @@ export default function CustomDropdown() {
 
   return (
     <div className="relative w-full">
-      <h2 className="mb-2 font-medium">Name to the person</h2>
+      <h2 className="mb-2 font-medium">Feedback recipient(s)</h2>
 
       {/* Dropdown button */}
       <button

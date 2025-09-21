@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-// import { Listbox } from "@headlessui/react";
 import CustomDropdown from "./dropdown";
 
 export default function FeedbackForm() {
@@ -18,7 +17,7 @@ export default function FeedbackForm() {
   };
 
   return (
-    <div className="flex justify-center items-center h-auto min-w-3xl bg-blue-300 p-10">
+    <div className="flex justify-center items-center h-full min-w-3xl bg-blue-400 p-10">
       <Card className="w-full max-w-md shadow-xl rounded-2xl bg-white">
         <CardContent className="p-6 space-y-6">
           {!submitted ? (
@@ -32,7 +31,7 @@ export default function FeedbackForm() {
               </div>
               {/* Title */}
               <div>
-                <h2>TITLE</h2>
+                <h2>Subject</h2>
                 <input
                   type="text"
                   className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none"
@@ -43,7 +42,7 @@ export default function FeedbackForm() {
               </div>
               {/* Feedback */}
               <div>
-                <h2>Feedback</h2>
+                <h2>Feedback comment(s)</h2>
                 <textarea
                   className="w-full border border-blue-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none resize-none"
                   rows={5}
@@ -68,7 +67,8 @@ export default function FeedbackForm() {
               <Button
                 type="submit"
                 className="w-full h-14 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold"
-                disabled={!name || !title || !feedback || code.length !== 6}
+                // disabled={!name || !title || !feedback || code.length !== 6}
+                disabled={!title || !feedback || code.length !== 6}
               >
                 Submit
               </Button>
