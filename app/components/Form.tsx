@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import CustomDropdown from "./dropdown";
+// import CustomDropdown from "./dropdown";
+import MultiSelectWithSearch from "./multiSelector";
 
 export default function FeedbackForm() {
   const [name, setName] = useState("");
@@ -27,7 +28,8 @@ export default function FeedbackForm() {
               </h2>
               {/* Dropdown */}
               <div>
-                <CustomDropdown />
+                {/* <CustomDropdown /> */}
+                <MultiSelectWithSearch />
               </div>
               {/* Title */}
               <div>
